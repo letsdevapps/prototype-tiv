@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="../static/css/w3/w3.css" th:href="@{/static/css/w3/w3.css}" />
+	<script type="text/javascript" src="../static/js/w3/w3.js" th:src="@{/static/js/w3/w3.js}"></script>
+</head>
+<body>
+	<nav class="w3-bar w3-green">
+		<a th:href="@{/}" class="w3-bar-item w3-button w3-wide">Inicio</a>
+		<div sec:authorize="isAuthenticated()" class="w3-right">
+    		<a th:href="@{/logout}" class="w3-bar-item w3-button w3-wide">Sair</a>
+    	</div>
+	</nav>
+	<div class="w3-container">
+		<div class="w3-row">
+			<div class="w3-half">
+				<p>MENU</p>
+			</div>
+			<div class="w3-half">
+				<p>Adicionar endereço e porta, ex http://localhost:8080</p>
+			</div>
+		</div>
+		<div class="w3-row w3-grey">
+			<div class="w3-half">
+				<a th:href="@{/v2/api-docs}" class="w3-bar-item w3-button w3-wide" target="_blank">Swagger</a>
+			</div>
+			<div class="w3-half">
+				<p>/tivia/v2/api-docs</p>
+			</div>
+		</div>
+		<div class="w3-row">
+			<div class="w3-half">
+				<p>Cadastrar um Beneficiario com Documentos</p>
+			</div>
+			<div class="w3-half">
+				<p>/tivia/api/beneficiario - POST JSON</p>
+			</div>
+		</div>
+		<div class="w3-row w3-grey">
+			<div class="w3-half">
+				<a th:href="@{/api/beneficiario/beneficiarios}" class="w3-button" target="_blank">Listar todos Beneficiarios</a>
+			</div>
+			<div class="w3-half">
+				<p>/tivia/api/beneficiario/beneficiarios</p>
+			</div>
+		</div>
+		<div class="w3-row">
+			<div class="w3-half">
+				<p>Listar todos Documentos de um Beneficiario</p>
+			</div>
+			<div class="w3-half">
+				<p>/tivia/api/beneficiario/documentos/{beneficiarioId}</p>
+			</div>
+		</div>
+		<div class="w3-row w3-grey">
+			<div class="w3-half">
+				<p>Atualizar um Beneficiario</p>
+			</div>
+			<div class="w3-half">
+				<p>/tivia/api/beneficiario/{beneficiarioId} - PUT JSON</p>
+			</div>
+		</div>
+		<div class="w3-row">
+			<div class="w3-half">
+				<p>Remover um Beneficiario</p>
+			</div>
+			<div class="w3-half">
+				<p>/tivia/api/beneficiario/{beneficiarioId} - DELETE</p>
+			</div>
+		</div>
+		<div class="w3-display">
+		<p>Modelo JSON para criação de um Beneficiario com dois Documentos</p>
+				{
+    				"nome": "João",
+				    "telefone": "+55 11 98765-4321",
+				    "dataNascimento": "2024-01-01",
+  					"documentos": [
+    							{
+      								"tipoDocumento": "RG",
+      								"descricao": "1234567"
+    							},
+    							{
+      								"tipoDocumento": "CPF",
+      								"descricao": "987654321"
+    							}
+  					]
+				}
+		</div>
+	</div>
+	<footer class="w3-green" style="position:fixed;bottom:0;left:0;width:100%;">
+		<div class="w3-row-padding">
+			<div class="w3-third">
+				<p>Obrigado</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
